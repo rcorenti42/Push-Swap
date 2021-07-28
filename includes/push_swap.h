@@ -1,15 +1,16 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../Libft/includes/libft.h"
+# include "../libft/includes/libft.h"
 
-typedef struct	s_pile
+typedef struct	s_piles
 {
 	int	*size;
-	int	*nbr;
-}		t_pile;
+	int	**nbr;
+}		t_piles;
 
 int	ft_checker(int argc, char **argv);
-void	ft_putstr(char *str, int stat);
+void	set_nbr(t_piles *piles, int argc, char **argv);
+void	ft_putstr(char *str, int stat, t_piles *piles);
 
 #endif
