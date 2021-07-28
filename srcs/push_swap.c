@@ -56,6 +56,7 @@ int	main(int argc, char **argv)
 		return (0);
 	if (!ft_checker(argc, argv))
 		ft_putstr("Error", 2, &piles);
+	set_nbr(&piles, argc, argv);
 	printf("%d\n", piles.nbr[0][0]);
 	free(piles.size);	
 	return (0);
