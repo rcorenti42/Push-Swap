@@ -28,7 +28,24 @@ static	int	ft_get_size(int number)
 	return (count);
 }
 
-char		*ft_itoa(int n)
+char	*ft_utils(int n, int size, int neg, char *tab)
+{
+	if (neg)
+		tab[0] = '-';
+	tab[size + neg] = '\0';
+	while (size)
+	{
+		if (neg)
+			tab[size] = n % 10 + '0';
+		else
+			tab[size - 1] = n % 10 + '0';
+		n = n / 10;
+		size--;
+	}
+	return (tab);
+}
+
+char	*ft_itoa(int n)
 {
 	int		size;
 	int		neg;
@@ -46,17 +63,5 @@ char		*ft_itoa(int n)
 	tab = (char *)malloc(sizeof(char) * (size + 1 + neg));
 	if (tab == NULL)
 		return (NULL);
-	if (neg)
-		tab[0] = '-';
-	tab[size + neg] = '\0';
-	while (size)
-	{
-		if (neg)
-			tab[size] = n % 10 + '0';
-		else
-			tab[size - 1] = n % 10 + '0';
-		n = n / 10;
-		size--;
-	}
-	return (tab);
+	return (ft_utils(n, size, neg, tab));
 }

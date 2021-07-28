@@ -40,8 +40,8 @@ static int	ft_memstr(int x, char c, char **tab, const char *s)
 		while (*s == c)
 			s++;
 		s++;
-		tab[i] = malloc(sizeof(char) * ft_letters(--s, c) + 1)
-		if (tab[i] = NULL)
+		tab[i] = malloc(sizeof(char) * ft_letters(--s, c) + 1);
+		if (tab[i] == NULL)
 		{
 			ft_freetab(tab, i);
 			return (0);
@@ -55,7 +55,7 @@ static int	ft_memstr(int x, char c, char **tab, const char *s)
 	return (1);
 }
 
-char		**ft_split(const char *s, char c)
+char	**ft_split(const char *s, char c)
 {
 	char	**tab;
 	int		i;
@@ -72,7 +72,7 @@ char		**ft_split(const char *s, char c)
 		i++;
 	}
 	tab = malloc(sizeof(char *) * (x + 1));
-	if (tab = NULL)
+	if (tab == NULL)
 		return (NULL);
 	tab[x] = NULL;
 	if (ft_memstr(x, c, tab, s) == 0)

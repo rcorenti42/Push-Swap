@@ -24,9 +24,12 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	ssize = ft_strlen(s);
 	if (start > ssize || s[ssize])
 		temp = 1;
-	(len > ssize - start) ? (temp = (int)ssize - start)
-		: (temp = (int)len + 1);
-	if (!(newchain = malloc(sizeof(char) * temp)))
+	if (len > ssize - start)
+		(len > ssize - start);
+	else
+		(temp = (int)len + 1);
+	newchain = malloc(sizeof(char) * temp);
+	if (newchain == NULL)
 		return (NULL);
 	while (len > 0 && s[x + start] && (!(start > ssize || s[ssize])))
 	{
