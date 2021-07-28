@@ -1,6 +1,16 @@
-#include "push_swap.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/07/28 07:37:17 by rcorenti          #+#    #+#             */
+/*   Updated: 2021/07/28 07:37:35 by rcorenti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-#include <stdio.h>
+#include "push_swap.h"
 
 int	ft_checker(int argc, char **argv)
 {
@@ -57,7 +67,6 @@ int	main(int argc, char **argv)
 	if (!ft_checker(argc, argv))
 		ft_putstr("Error", 2, &piles);
 	set_nbr(&piles, argc, argv);
-	printf("%d\n", piles.nbr[0][0]);
-	free(piles.size);	
+	free(piles.size);
 	return (0);
 }
