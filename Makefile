@@ -8,7 +8,9 @@ DIR_O = obj
 LIBFT = libft
 
 SOURCES = push_swap.c \
-	  utils.c
+	  utils.c \
+	  swap.c \
+	  actions.c
 
 OBJ = $(SOURCES:.c=.o)
 

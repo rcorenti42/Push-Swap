@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/28 07:37:17 by rcorenti          #+#    #+#             */
-/*   Updated: 2021/07/28 07:37:35 by rcorenti         ###   ########.fr       */
+/*   Updated: 2021/07/29 05:18:07 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	set_nbr(t_piles *piles, int argc, char **argv)
 	i = 0;
 	piles->nbr = malloc(sizeof(int *) * 2);
 	piles->nbr[0] = malloc(sizeof(int) * argc - 1);
-	piles->nbr[1] = malloc(sizeof(int) * 0);
+	piles->nbr[1] = malloc(sizeof(int) * argc - 1);
 	while (--argc)
 	{
 		piles->nbr[0][i] = ft_atoi(argv[i + 1]);
@@ -67,6 +67,7 @@ int	main(int argc, char **argv)
 	if (!ft_checker(argc, argv))
 		ft_putstr("Error", 2, &piles);
 	set_nbr(&piles, argc, argv);
+	push_swap(&piles);
 	free(piles.size);
 	return (0);
 }
