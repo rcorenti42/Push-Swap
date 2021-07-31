@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/30 02:10:21 by rcorenti          #+#    #+#             */
-/*   Updated: 2021/07/31 06:31:12 by rcorenti         ###   ########.fr       */
+/*   Updated: 2021/07/31 06:48:08 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	reverse_rotate(int type, t_piles *piles)
 		i = piles->size[1];
 		while (--i > 0)
 			ft_reverse(1, i, i - 1, piles);
-		ft_putstr("rrb", 1, piles
+		ft_putstr("rrb", 1, piles);
 	}
 	else
 	{
@@ -107,7 +107,7 @@ void	push(int type, t_piles *piles)
 	if (type == 1)
 	{
 		piles->nbr[0][piles->size[0]] = piles->nbr[1][0];
-		piles->nbr[1][0] = NULL;
+		*piles->nbr[1][0] = NULL;
 		while (++i < piles->size[1])
 			ft_reverse(1, i, i - 1, piles);
 		i = piles->size[0];
@@ -118,7 +118,7 @@ void	push(int type, t_piles *piles)
 	else
 	{
 		piles->nbr[1][piles->size[1]] = piles->nbr[0][0];
-		piles->nbr[0][0] = NULL;
+		*piles->nbr[0][0] = NULL;
 		while (++i < piles->size[0])
 			ft_reverse(0, i, i - 1, piles);
 		i = piles->size[1];
