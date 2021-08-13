@@ -25,8 +25,7 @@ char	*ft_uitoa(unsigned int u)
 		i /= 10;
 		size++;
 	}
-	tab = (char *)malloc(sizeof(char) * (size + 1));
-	if (tab == NULL)
+	if (!(tab = (char *)malloc(sizeof(char) * (size + 1))))
 		return (NULL);
 	tab[size] = '\0';
 	while (size--)

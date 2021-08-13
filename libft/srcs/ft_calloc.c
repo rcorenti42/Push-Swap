@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 02:39:20 by rcorenti          #+#    #+#             */
-/*   Updated: 2021/07/27 22:46:32 by rcorenti         ###   ########.fr       */
+/*   Updated: 2019/11/14 22:41:45 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ void	*ft_calloc(size_t elements, size_t size)
 	void	*place;
 
 	place = NULL;
-	place = malloc(size * elements);
-	if (place == NULL)
+	if (!(place = malloc(size * elements)))
 		return (NULL);
 	ft_bzero(place, elements * size);
 	return (place);

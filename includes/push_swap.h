@@ -15,21 +15,27 @@
 
 # include "../libft/includes/libft.h"
 
-typedef struct s_piles
+typedef struct s_pile
 {
-	int	*size;
-	int	**nbr;
-}		t_piles;
+	int	nbr;
+	struct s_pile *next;
+}		t_pile;
+
+typedef struct s_begin
+{
+	struct s_pile *ba;
+	struct s_pile *bb;
+}		t_begin;
 
 int		ft_checker(int argc, char **argv);
-void	set_nbr(t_piles *piles, int argc, char **argv);
-void	ft_putstr(char *str, int stat, t_piles *piles);
-void	push_swap(t_piles *piles);
-void	swap_three(t_piles *piles);
-void	ft_reverse(int pos, int nbr_a, int nbr_b, t_piles *piles);
-void	swap_top(int type, t_piles *piles);
-void	rotate(int type, t_piles *piles);
-void	reverse_rotate(int type, t_piles *piles);
-void	push(int type, t_piles *piles);
+void	set_nbr(t_pile *pile, int argc, char **argv);
+void	ft_putstr(char *str, int stat, t_pile *pile);
+void	push_swap(t_pile *pile);
+void	swap_three(t_pile *pile);
+void	ft_reverse(int pos, int nbr_a, int nbr_b, t_pile *pile);
+void	swap_top(int type, t_pile *pile);
+void	rotate(int type, t_pile *pile);
+void	reverse_rotate(int type, t_pile *pile);
+void	push(int type, t_pile *pile);
 
 #endif

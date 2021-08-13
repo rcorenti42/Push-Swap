@@ -32,22 +32,13 @@ static size_t	ft_setcmp(const char c, const char *set)
 
 static	char	*ft_zero(char *str)
 {
-	str = malloc(sizeof(char) * 1);
-	if (str == NULL)
+	if (!(str = malloc(sizeof(char) * 1)))
 		return (NULL);
 	str[0] = '\0';
 	return (str);
 }
 
-char	*ft_utils(char *str)
-{
-	str = ft_zero(str);
-	if (str == NULL)
-		return (NULL);
-	return (str);
-}
-
-char	*ft_strtrim(const char *s1, const char *set)
+char			*ft_strtrim(const char *s1, const char *set)
 {
 	char	*str;
 	size_t	i;
@@ -64,14 +55,13 @@ char	*ft_strtrim(const char *s1, const char *set)
 		j = ft_strlen(s1) - 1;
 		while (ft_setcmp(s1[j], set) == 1)
 			j--;
-		str = malloc(sizeof(char) * (j - i + 2));
-		if (str == NULL)
+		if (!(str = malloc(sizeof(char) * (j - i + 2))))
 			return (NULL);
 		while (++k < j - i + 1)
 			str[k] = s1[i + k];
 		str[k] = '\0';
 	}
-	else
-		return (ft_utils(str));
+	else if (!(str = ft_zero(str)))
+		return (NULL);
 	return (str);
 }

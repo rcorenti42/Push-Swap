@@ -6,13 +6,13 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 16:00:02 by rcorenti          #+#    #+#             */
-/*   Updated: 2021/07/27 23:08:16 by rcorenti         ###   ########.fr       */
+/*   Updated: 2019/11/18 16:06:52 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_letters(const char *s, char c)
+static int		ft_letters(const char *s, char c)
 {
 	int	i;
 
@@ -22,14 +22,14 @@ static int	ft_letters(const char *s, char c)
 	return (i);
 }
 
-static void	ft_freetab(char **tab, int i)
+static void		ft_freetab(char **tab, int i)
 {
 	while (i)
 		free(&tab[i--]);
 	free(tab);
 }
 
-static int	ft_memstr(int x, char c, char **tab, const char *s)
+static int		ft_memstr(int x, char c, char **tab, const char *s)
 {
 	int	i;
 	int	z;
@@ -40,8 +40,7 @@ static int	ft_memstr(int x, char c, char **tab, const char *s)
 		while (*s == c)
 			s++;
 		s++;
-		tab[i] = malloc(sizeof(char) * ft_letters(--s, c) + 1);
-		if (tab[i] == NULL)
+		if (!(tab[i] = malloc(sizeof(char) * ft_letters(--s, c) + 1)))
 		{
 			ft_freetab(tab, i);
 			return (0);
@@ -55,7 +54,7 @@ static int	ft_memstr(int x, char c, char **tab, const char *s)
 	return (1);
 }
 
-char	**ft_split(const char *s, char c)
+char			**ft_split(const char *s, char c)
 {
 	char	**tab;
 	int		i;
@@ -71,8 +70,7 @@ char	**ft_split(const char *s, char c)
 			x++;
 		i++;
 	}
-	tab = malloc(sizeof(char *) * (x + 1));
-	if (tab == NULL)
+	if (!(tab = malloc(sizeof(char *) * (x + 1))))
 		return (NULL);
 	tab[x] = NULL;
 	if (ft_memstr(x, c, tab, s) == 0)

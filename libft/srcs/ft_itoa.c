@@ -6,13 +6,13 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 06:42:45 by rcorenti          #+#    #+#             */
-/*   Updated: 2021/07/27 23:02:41 by rcorenti         ###   ########.fr       */
+/*   Updated: 2019/11/18 16:16:22 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	int	ft_get_size(int number)
+static	int		ft_get_size(int number)
 {
 	int	count;
 
@@ -28,24 +28,7 @@ static	int	ft_get_size(int number)
 	return (count);
 }
 
-char	*ft_utils(int n, int size, int neg, char *tab)
-{
-	if (neg)
-		tab[0] = '-';
-	tab[size + neg] = '\0';
-	while (size)
-	{
-		if (neg)
-			tab[size] = n % 10 + '0';
-		else
-			tab[size - 1] = n % 10 + '0';
-		n = n / 10;
-		size--;
-	}
-	return (tab);
-}
-
-char	*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
 	int		size;
 	int		neg;
@@ -60,8 +43,16 @@ char	*ft_itoa(int n)
 		n = -n;
 		neg = 1;
 	}
-	tab = (char *)malloc(sizeof(char) * (size + 1 + neg));
-	if (tab == NULL)
+	if (!(tab = (char *)malloc(sizeof(char) * (size + 1 + neg))))
 		return (NULL);
-	return (ft_utils(n, size, neg, tab));
+	if (neg)
+		tab[0] = '-';
+	tab[size + neg] = '\0';
+	while (size)
+	{
+		tab[size - (neg ? 0 : 1)] = n % 10 + '0';
+		n = n / 10;
+		size--;
+	}
+	return (tab);
 }
